@@ -1,5 +1,6 @@
 # Create a simple Point class to represent the affine points.
 from collections import namedtuple
+import time
 Point = namedtuple("Point", "x y")
 point_list = []
 # The point at infinity (origin for the group law).
@@ -91,14 +92,24 @@ def break_ecc(R, m):
             #break
         
         
-
-
+time_lapse = []
+def time_inv():
+    for i in range(10):
+        #cons_p(301)
+        start = time.time()
+        break_ecc(Point(x=121, y=2778),1500)
+        end = time.time()
+        time_lapse.append(abs(end-start))
+        #print(abs(end-start))
+    print("the average time lapse is:", sum(time_lapse)/10)
+        
+    
 
 
 
 P = Point(1, 3)
 point_list.append(P)
-print(cons_p(2777))
+#print(cons_p(1477))
 #Q = Point(2, 4)
 #R = Point(2, 3103)
 #print("2P:", ec_add(P,P))
@@ -113,8 +124,9 @@ FiveP = ec_add(ThreeP,TwoP)
 #print("5P:", FiveP)
 #TenP = ec_add(FiveP, FiveP)
 #print(TenP)
+time_inv()
 
-break_ecc(Point(x=2689, y=2986),3000)
+#break_ecc(Point(x=3110, y=605),50)
 
 # Compute 4P two different ways.
 #assert ec_add(P, ThreeP) == ec_add(TwoP, TwoP)
