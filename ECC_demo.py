@@ -1,4 +1,4 @@
-
+import time
 #px, py are my generator point on the curve
 point_list = []
 #append the generator to my list 
@@ -90,20 +90,21 @@ def ecc_fun(a, b, x, y):
 g1 = point_add(0, 8, 1,3,1,3)
 #point_list.append(g1)
 #1000P, and print out the 1000th P
-print(cons_p(0,8,1,3,5000)[4980])
+
 #print(fast_np(0,8,1,3,1000))
 #print((cons_p(0,8,1,3,2)[1])[0])
 
 
 
 #the following is to calculate the n
+#print(cons_p(0,8,1,3,3000)[2977])
 def break_ecc(a, b, px, py):
-    for i in range(5000):
-        if (cons_p(a,b,px,py,i)[i-1]) == (1.8499811817018426, 3.487682328123232):
-            print(cons_p(a,b,px,py,i)[i-1])
+    for i in range(3000):
+        if (cons_p(a,b,px,py,i)[i-1]) == (-0.21705667406016937, -3.252749973783383):
+            #print(cons_p(a,b,px,py,i)[i-1])
             #print(cons_p(a,b,px,py,i)[i-1])
             #print(cons_p(0,8,1,3,10)[9])
-            print(i, "yes")
+            print(i)
             break
         #print(i)
         #else:
@@ -111,10 +112,27 @@ def break_ecc(a, b, px, py):
             #print(cons_p(a,b,px,py,i)[i-1])
             #print("no")
         
+#break_ecc(0,8,1,3)
+#print(cons_p(477))
 
-#print(cons_p(1001))
-            
-break_ecc(0,8,1,3)
+time_lapse = []
+def time_inv():
+    
+    for i in range(100):
+        cons_p(0,8,1,3,3000)[2977]
+        start = time.time()    
+    
+        break_ecc(0,8,1,3)
+        end = time.time()
+        time_lapse.append(abs(end-start))
+    
+        print(abs(end-start))
+    print("the average time lapse is:", sum(time_lapse)/100)
+    
+time_inv()
+
+
+
 
 '''
 g2 = cons_p()
