@@ -234,7 +234,7 @@ def main(a,b,p):
     
 
 #prime_p_closest(1,1,7)
-main(0,1,7)
+main(0,8,3571)
 
 
 
