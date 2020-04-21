@@ -5,7 +5,7 @@ Created on Tue Oct 22 14:13:53 2019
 
 @author: yuxuanzhao
 """
-
+from functools import reduce
 import random
 import math
 '''using Euclid's algorithms to determine gcd
@@ -17,6 +17,28 @@ def gcd(a,b):
     print(a)
     return a
 '''
+def factors(n):    
+    return set(reduce(list.__add__, 
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+    
+print(factors(17855))
+
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+
+print(prime_factors(17855))
+
 
 print(math.gcd(20186,9827))
 # mulriplicative inverse of two numbers
@@ -91,10 +113,6 @@ def is_prime(a):
             return False
     return True
 
-print(is_prime(17))
-
-print(is_prime(198287318282838102837198236239999991919191919192827382919172823))
-
 def generate_key(p, q):
     # first testify if p q are prime numbers
     if not (is_prime(p) and is_prime(q)):
@@ -139,7 +157,7 @@ def decrypt(pk, encode_text):
     init_text = [chr((char**key) % n) for char in encode_text]
     return ''.join(init_text)
 
-'''
+
 if __name__ == '__main__':
     print ("RSA Encrypter / Decrypter")
     p = int(input("Enter a prime number"))
@@ -155,7 +173,7 @@ if __name__ == '__main__':
     #print("Decrypting message with public key ", public, "...")
     #print("Your message is:")
     #print(decrypt(public, encode_msg))
-'''
+
     
 
 

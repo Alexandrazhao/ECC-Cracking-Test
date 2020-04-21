@@ -216,7 +216,7 @@ def main(a,b,p):
         #print("tuplelist is ", mergelist(intGen(p), eccformula(a,b,p)))
         #print("contains",contains(a,b,p))
         #print("The distance is", distance(a,b,p))
-        print("The shortest distance with current b is", shortest_dis(a,b,p))
+        #print("The shortest distance with current b is", shortest_dis(a,b,p))
         #find the shortest diatnce amoung those points
         print("The number of points are:", count_pt(a,b,p))
         #print(prime_p_closest(a,b,p))
@@ -228,13 +228,13 @@ def main(a,b,p):
             compare_list.append(shortest_dis(a, b, p))
             b = b+1
         #print("From b = 1 to p-1, the list of shortest value is", compare_list)
-        print("The b values are", list_dup_items(compare_list, 1), "have shortest path to the origin")
+        #print("The b values are", list_dup_items(compare_list, 1), "have shortest path to the origin")
         
     
     
 
 #prime_p_closest(1,1,7)
-main(0,8,3571)
+main(2,2,9)
 
 
 
