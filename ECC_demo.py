@@ -92,15 +92,15 @@ g1 = point_add(0, 8, 1,3,1,3)
 #1000P, and print out the 1000th P
 
 #print(fast_np(0,8,1,3,1000))
-#print((cons_p(0,8,1,3,2)[1])[0])
+print((cons_p(0,8,1,3,2)[1])[0])
 
 
 
 #the following is to calculate the n
-#print(cons_p(0,8,1,3,3000)[2977])
+#print(cons_p(0,8,1,3,100000)[99997])
 def break_ecc(a, b, px, py):
-    for i in range(3000):
-        if (cons_p(a,b,px,py,i)[i-1]) == (-0.21705667406016937, -3.252749973783383):
+    for i in range(100000):
+        if (cons_p(a,b,px,py,i)[i-1]) == (6.424718772812134, 16.134112182199456):
             #print(cons_p(a,b,px,py,i)[i-1])
             #print(cons_p(a,b,px,py,i)[i-1])
             #print(cons_p(0,8,1,3,10)[9])
@@ -118,16 +118,16 @@ def break_ecc(a, b, px, py):
 time_lapse = []
 def time_inv():
     
-    for i in range(100):
-        cons_p(0,8,1,3,3000)[2977]
+    for i in range(1):
+        #cons_p(0,8,1,3,1000)[997]
         start = time.time()    
     
         break_ecc(0,8,1,3)
         end = time.time()
         time_lapse.append(abs(end-start))
     
-        print(abs(end-start))
-    print("the average time lapse is:", sum(time_lapse)/100)
+        #print(abs(end-start))
+    print("the average time lapse is:", sum(time_lapse)/3)
     
 time_inv()
 
@@ -144,7 +144,7 @@ print(point_list)
 print(point_list[1][0])'''
 #print(g1)
 #print(g2)
-#print(point_list[9999])
+#print(point_list[97])
 
 #print(point_add(0,8,1,3,-0.678,2.767))
 

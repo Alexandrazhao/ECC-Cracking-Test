@@ -174,8 +174,7 @@ def order_starter(R, m):
             #break
 
 def break_ecc(F,m,n):
-    "NEED CHANGE"
-    i = order_starter(Point(x=823, y=1064),100)
+    i = order_starter(F,m)
     "NEED CHANGE"
     order = order_p(0,8,1223,1224)
     for j in range(i,m,order):
@@ -184,17 +183,18 @@ def break_ecc(F,m,n):
         if cons_p(j) == F and j == n:
             print(j, "yes")
             
-
+"F is the given point, m is the upper bound, n is the secret n, r is how many times"  
+"I do this trial"
 time_lapse = []
-def time_inv():
-    for i in range(1):
-        cons_p(1000)
+def time_inv(F, m, n, r):
+    for i in range(r):
+        cons_p(m)
         start = time.time()
-        break_ecc(Point(x=1, y=3),400,307)
+        break_ecc(F,m,n)
         end = time.time()
         time_lapse.append(abs(end-start))
         #print(abs(end-start))
-    print("the average time lapse is:", sum(time_lapse)/1)
+    print("the average time lapse is:", sum(time_lapse)/r)
     
     
 
@@ -212,41 +212,26 @@ def order_p(a, b, p,num):
             break
     
         
-
+"Generator point"
 P = Point(1,3)
 point_list.append(P)
 "cons_P(num of points(the group order), this is really important!!!!!!!!!)"
 #print(cons_p(1977))
 #order_p(1,1,11,14)
+#print(count_point(0,8,1223))
+
 "NEED CHANGE"
 cons_p(1000)
 #print(cons_p(777))
 #print(cons_p(307))
 "NEED CHANGE"
-break_ecc(Point(x=823, y=1064),1000,777)
+#break_ecc(Point(x=823, y=1064),1000,777)
+time_inv(Point(x=823, y=1064),1000,777,1)
 #print("my 1000th point is:", cons_p())
 
-#print(cons_p(9))
-#Q = Point(2, 4)
-#R = Point(2, 3103)
-#print("2P:", ec_add(P,P))
-TwoP = ec_add(P, P)
-#point_list.append(TwoP)
-#print(point_list[1])
-ThreeP = ec_add(TwoP, P)
-#print("3P:", ThreeP)
-#point_list.append(ThreeP)
-#print(ec_add(point_list[1],P))
-FiveP = ec_add(ThreeP,TwoP)
-#print("5P:", FiveP)
-#TenP = ec_add(FiveP, FiveP)
-#print(TenP)
 
-#break_ecc(Point(x=1, y=3),400,307)
-#main()
-#time_inv()
+#TwoP = ec_add(P, P)
 
-# Compute 4P two different ways.
-#assert ec_add(P, ThreeP) == ec_add(TwoP, TwoP)
-# Check the associative law.
-#assert ec_add(P, ec_add(Q, R)) == ec_add(ec_add(P, Q), R)
+#ThreeP = ec_add(TwoP, P)
+
+#FiveP = ec_add(ThreeP,TwoP)
