@@ -8,6 +8,7 @@ Created on Fri Feb 21 09:45:41 2020
 "only works for prime numbers"
 
 import numpy as np
+import math
 
 def gen_x(p):
     x = []
@@ -68,15 +69,75 @@ def count_point(a, b, p):
         else:
             count = count+0
         '''
-    print(sum(count))
+    return (sum(count)+1)
+    #print(sum(count)+1)
     #return count
 '''
 def outcome():
     for x in len(p):
         if qua_residual(a,b,p) == 1:
 '''
-count_point(2,11,7937)
+def divisor(n):
+    for i in range(1, n+1):
+        if n % i == 0:
+            print(i)
+            
+#divisor(count_point(1,1,11))
+
+
+print(count_point(0,1,109))
 #qua_residual(0,11,7,0)
+
+
+'''This part is new for y^2 = x^3+b mod m, where b<= m, to see the characteristic of the field'''
+degree_list = []
+def count_degree(a,p):
+    for i in range(p):
+        degree_list.append(count_point(0,i,p))
+    return degree_list
+
+print(count_degree(0,19 ))
+
+'''function to check log base 2'''
+def log2(x):
+    if x == 0:
+        return False
+    return (math.log10(x) / math.log10(2))
+'''function to check log base 3'''
+def log3(x):
+    if x == 0:
+        return False
+    return (math.log10(x) / math.log10(3))
+
+def isPowerOfThree(n):
+    if ( math.ceil(log3(n))==math.floor(log3(n))):
+        return True
+    else:
+        return False
+
+
+def isPowerOfTwo(n):
+    if ( math.ceil(log2(n))==math.floor(log2(n))):
+        return True
+    else:
+        return False
+    
+#print(isPowerOfTwo(10))
+
+def find_power_two():
+    for j in degree_list:
+        #print(j)
+        if (isPowerOfTwo(j)):
+            print(j, "yes")
+        elif (isPowerOfThree(j)):
+            print(j, "yes")
+            
+find_power_two()
+            
+
+
+
+    
 
 
 
