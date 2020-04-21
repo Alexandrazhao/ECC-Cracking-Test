@@ -2,6 +2,10 @@
 from collections import namedtuple
 import time
 import numpy as np
+import random
+from sympy import *
+
+
 Point = namedtuple("Point", "x y")
 point_list = []
 # The point at infinity (origin for the group law).
@@ -9,9 +13,9 @@ O = 'Origin'
 
 # Choose a particular curve and prime.  We assume that p > 3.
 "NEED CHANGE"
-p = 1223
+p = 73
 a = 0
-b = 8
+b = 4
 
 
 
@@ -156,7 +160,7 @@ def cons_p(n):
     for i in range(n-1):
         new_P = ec_add(P, point_list[i])
         point_list.append(new_P)
-    #print( point_list)
+    #print(point_list)
     return point_list[n-1]
 
 #cons_p(7)
@@ -165,24 +169,32 @@ def order_starter(R, m):
     "m is my upper bound"
     "now choose the order then go through, fix the number"
     "NEED CHANGE"
-    order = order_p(0,8,1223,1224)
+    order = order_p(0,4,73,57) 
+    fix = None
     for i in range(1, order+1):
+        #print(cons_p(i))
         if cons_p(i) == R:
-            #print(i)
-            return i
-            #print(cons_p(i))
-            #break
-
+            fix = i
+    return fix
+        
+        
+        
+        
+        
 def break_ecc(F,m,n):
     i = order_starter(F,m)
     "NEED CHANGE"
-    order = order_p(0,8,1223,1224)
+    #order = 1838
+    order = order_p(0,4,73,57)
     for j in range(i,m,order):
         #print(j)
         #print(j,cons_p(j))
         if cons_p(j) == F and j == n:
             print(j, "yes")
-            
+            break
+        #else:
+            #print(cons_p(j),j, "no")
+
 "F is the given point, m is the upper bound, n is the secret n, r is how many times"  
 "I do this trial"
 time_lapse = []
@@ -194,7 +206,8 @@ def time_inv(F, m, n, r):
         end = time.time()
         time_lapse.append(abs(end-start))
         #print(abs(end-start))
-    print("the average time lapse is:", sum(time_lapse)/r)
+    return sum(time_lapse)/r
+    #print("the average time lapse is:", sum(time_lapse)/r)
     
     
 
@@ -211,27 +224,60 @@ def order_p(a, b, p,num):
             return elem
             break
     
-        
+
+
 "Generator point"
-P = Point(1,3)
+P = Point(0,2)
 point_list.append(P)
+pre_start = time.time()
+cons_p(1000)
+pre_end = time.time()
+print("The pre calculation takes", pre_end-pre_start)
+#count_point(0,8,3571)
+#order_p(0,8,23,24)
+systemRandom = random.SystemRandom()
+#print(order_starter(Point(x=0, y=1),30))
 "cons_P(num of points(the group order), this is really important!!!!!!!!!)"
-#print(cons_p(1977))
+#print(cons_p(2128))
+#break_ecc(Point(x=971, y=1174),2500,2033)
+randomNumber = (systemRandom.randint(1,1000))
+#print(randomNumber, cons_p(randomNumber)
+#break_ecc(cons_p(randomNumber),1000, randomNumber)
+
+#randomNumber = (systemRandom.randint(1,3000))
+#print(cons_p(randomNumber))
+#print(randomNumber, cons_p(randomNumber))
+#break_ecc(cons_p(randomNumber), 1500, randomNumber)
+print(time_inv(cons_p(randomNumber),1000, randomNumber,1))
+#print(time_inv(Point(x=951, y=1120), 99, 80,1))
+#randomNumber = (systemRandom.randint(1,10000))
+#print(cons_p(80))
+
+
+#primes = [i for i in range(10000,100000) if isprime(i)]
+#n = random.choice(primes)
+#print(n)5
+
+for i in range(100):
+    randomNumber = (systemRandom.randint(1,1000))
+    print(randomNumber, cons_p(randomNumber))
+    #break_ecc(cons_p(randomNumber), 1000, randomNumber)
+    print(time_inv(cons_p(randomNumber), 1000, randomNumber,1))
+
+
 #order_p(1,1,11,14)
 #print(count_point(0,8,1223))
 
 "NEED CHANGE"
-cons_p(1000)
-#print(cons_p(777))
-#print(cons_p(307))
+#cons_p(2500)
+#print(cons_p(77777))
+#print(cons_p(277))
 "NEED CHANGE"
-#break_ecc(Point(x=823, y=1064),1000,777)
-time_inv(Point(x=823, y=1064),1000,777,1)
-#print("my 1000th point is:", cons_p())
-
-
-#TwoP = ec_add(P, P)
-
-#ThreeP = ec_add(TwoP, P)
-
-#FiveP = ec_add(ThreeP,TwoP)
+'''
+start = time.time()
+break_ecc(Point(x=219, y=647),1000,778)
+end = time.time()
+time_lapse.append(abs(end-start))
+        #print(abs(end-start))
+print("the average time lapse is:", sum(time_lapse)/1)
+'''
