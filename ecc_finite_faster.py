@@ -70,22 +70,11 @@ def count_point(a, b, p):
     count = []
     for j in residual(a,b,p):
         count.append(qua_residual(a,b,p,j))
-        '''
-        if qua_residual(a,b,p, j) == 1:
-            count = count+2
-        elif qua_residual(a,b,p, j) == 0:
-            count = count+1
-        else:
-            count = count+0
-        '''
+        
     return (sum(count)+1)
     #print(sum(count)+1)
     #return count
-'''
-def outcome():
-    for x in len(p):
-        if qua_residual(a,b,p) == 1:
-'''
+
 def divisor(n):
     possible_order = []
     for i in range(1, n+1):
@@ -187,8 +176,7 @@ def break_ecc(F,m,n):
     #order = 1838
     order = order_p(0,4,73,57)
     for j in range(i,m,order):
-        #print(j)
-        #print(j,cons_p(j))
+
         if cons_p(j) == F and j == n:
             print(j, "yes")
             break
@@ -207,7 +195,6 @@ def time_inv(F, m, n, r):
         time_lapse.append(abs(end-start))
         #print(abs(end-start))
     return sum(time_lapse)/r
-    #print("the average time lapse is:", sum(time_lapse)/r)
     
     
 
@@ -218,9 +205,6 @@ def order_p(a, b, p,num):
     poss_list = divisor(count_point(a, b, p))
     for elem in poss_list:
         if cons_p(elem) == O :
-            #return elem
-            #print(True)
-            #print(elem, "True")
             return elem
             break
     
@@ -249,15 +233,6 @@ randomNumber = (systemRandom.randint(1,1000))
 #print(randomNumber, cons_p(randomNumber))
 #break_ecc(cons_p(randomNumber), 1500, randomNumber)
 print(time_inv(cons_p(randomNumber),1000, randomNumber,1))
-#print(time_inv(Point(x=951, y=1120), 99, 80,1))
-#randomNumber = (systemRandom.randint(1,10000))
-#print(cons_p(80))
-
-
-#primes = [i for i in range(10000,100000) if isprime(i)]
-#n = random.choice(primes)
-#print(n)5
-
 for i in range(100):
     randomNumber = (systemRandom.randint(1,1000))
     print(randomNumber, cons_p(randomNumber))
@@ -265,19 +240,5 @@ for i in range(100):
     print(time_inv(cons_p(randomNumber), 1000, randomNumber,1))
 
 
-#order_p(1,1,11,14)
-#print(count_point(0,8,1223))
 
-"NEED CHANGE"
-#cons_p(2500)
-#print(cons_p(77777))
-#print(cons_p(277))
-"NEED CHANGE"
-'''
-start = time.time()
-break_ecc(Point(x=219, y=647),1000,778)
-end = time.time()
-time_lapse.append(abs(end-start))
-        #print(abs(end-start))
-print("the average time lapse is:", sum(time_lapse)/1)
-'''
+
