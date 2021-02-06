@@ -8,7 +8,7 @@ Notably, this thesis concentrates on the elements that aﬀect the security leve
 # Mark
 This repo includes all testing code in this project. The major code is ecc_finite_fast.py which represents as the improved algorithm and ecc_finite_brute.py which representes the brutal force algorithm. 
 
-![Hello](4.4.12_s.png)
+![Hello](4.4.12.png)
 
 # Conclusion
 This thesis brieﬂy introduces the Public-Key cryptography, including Elliptic Curve Cryptography and RSA cryptosystem through mathematical concepts. We implement the necessary procedures of the elliptic curve cryptography and the RSA, make programs to mimic their key generation processes, and use these programs to crack private keys in both systems. For elliptic curve cryptography, we also measure the cracking time to ﬁnd out which element on an elliptic curve would aﬀect the security level.
