@@ -11,6 +11,7 @@ This repo includes all testing code in this project. The major code is ecc_finit
 ## The Final data comparison
 ![Final data form](4.4.12.png)
 ![Final data form](4.4.14.png)
+![Final data form](4.4.7.png)
 
 
 # Conclusion
